@@ -72,7 +72,7 @@ $ git clone https://github.com/brfeitoza/ig-news.git && cd ig-news
 $ yarn
 
 # Run Aplication
-$ yarn start
+$ yarn dev
 ```
 Go to http://localhost:3000/ to see the application running.
 
