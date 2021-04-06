@@ -44,7 +44,9 @@
 # :camera: Screenshots
 <div align="center">
    <img src="./.github/home.png" width="400px">
+   <img src="./.github/posts.png" width="400px">
    <img src="./.github/checkout.png" width="400px">
+   <img src="./.github/post.png" width="400px">
 </div>
 
 # :rocket: Technologies
@@ -58,6 +60,7 @@ This project was made using the follow technologies:
 * [React Icons](https://react-icons.github.io/react-icons/)
 * [FaunaDB](https://fauna.com/)
 * [Stripe](https://stripe.com/br)
+* [Prismic](https://prismic.io/)
 * [Axios](https://github.com/axios/axios)
 * [Husky](https://www.npmjs.com/package/husky)
 * [Commitlint](https://github.com/conventional-changelog/commitlint)
