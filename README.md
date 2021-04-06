@@ -74,6 +74,8 @@ $ git clone https://github.com/brfeitoza/ig-news.git && cd ig-news
 # Install Dependencies
 $ yarn
 
+# Fill .env.local file with YOUR environment variables, according to .env.example file.
+
 # Run Aplication
 $ yarn dev
 ```
