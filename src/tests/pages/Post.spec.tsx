@@ -9,15 +9,15 @@ const post = {
   slug: 'my-new-post',
   title: 'My new post',
   content: '<p>Post excerpt</p>',
-  updatedAt: '10 de abril'
+  updatedAt: '10 de abril',
 };
 
 jest.mock('next-auth/client');
-jest.mock('services/prismic')
+jest.mock('services/prismic');
 
 describe('Post page', () => {
   it('should be rendered in the document', () => {
-    render(<Post post={post} />)
+    render(<Post post={post} />);
 
     expect(screen.getByText('My new post')).toBeInTheDocument();
     expect(screen.getByText('Post excerpt')).toBeInTheDocument();
@@ -32,13 +32,13 @@ describe('Post page', () => {
       params: {
         slug: 'my-new-post',
       },
-    } as any)
+    } as any);
 
     expect(response).toEqual(
       expect.objectContaining({
         redirect: expect.objectContaining({
           destination: '/',
-        })
+        }),
       })
     );
   });
@@ -48,28 +48,29 @@ describe('Post page', () => {
     const getPrismicClientMocked = mocked(getPrismicClient);
 
     getSessionMocked.mockResolvedValueOnce({
-      activeSubscription: 'fake-active-subscription'
+      activeSubscription: 'fake-active-subscription',
     } as any);
 
     getPrismicClientMocked.mockReturnValueOnce({
       getByUID: jest.fn().mockResolvedValueOnce({
         data: {
-          title: [{
-            type: 'heading', text: 'My new post'
-          }],
-          content: [
-            { type: 'paragraph', text: 'Post content' }
+          title: [
+            {
+              type: 'heading',
+              text: 'My new post',
+            },
           ],
+          content: [{ type: 'paragraph', text: 'Post content' }],
         },
-        last_publication_date: '04-01-2021'
-      })
+        last_publication_date: '04-01-2021',
+      }),
     } as any);
 
     const response = await getServerSideProps({
       params: {
         slug: 'my-new-post',
       },
-    } as any)
+    } as any);
 
     expect(response).toEqual(
       expect.objectContaining({
@@ -78,10 +79,10 @@ describe('Post page', () => {
             slug: 'my-new-post',
             title: 'My new post',
             content: '<p>Post content</p>',
-            updatedAt: '01 de abril de 2021'
-          }
-        }
+            updatedAt: '01 de abril de 2021',
+          },
+        },
       })
     );
-  })
-})
+  });
+});

@@ -1,15 +1,15 @@
-import NextAuth from "next-auth";
-import Providers from "next-auth/providers";
-import { query as fql } from "faunadb";
+import NextAuth from 'next-auth';
+import Providers from 'next-auth/providers';
+import { query as fql } from 'faunadb';
 
-import { fauna } from "services/fauna";
+import { fauna } from 'services/fauna';
 
 export default NextAuth({
   providers: [
     Providers.GitHub({
       clientId: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
-      scope: "read:user",
+      scope: 'read:user',
     }),
   ],
   jwt: {
@@ -22,18 +22,18 @@ export default NextAuth({
           fql.Get(
             fql.Intersection([
               fql.Match(
-                fql.Index("subscription_by_user_ref"),
+                fql.Index('subscription_by_user_ref'),
                 fql.Select(
-                  "ref",
+                  'ref',
                   fql.Get(
                     fql.Match(
-                      fql.Index("user_by_email"),
+                      fql.Index('user_by_email'),
                       fql.Casefold(session.user.email)
                     )
                   )
                 )
               ),
-              fql.Match(fql.Index("subscription_by_status"), "active"),
+              fql.Match(fql.Index('subscription_by_status'), 'active'),
             ])
           )
         );
@@ -51,12 +51,12 @@ export default NextAuth({
           fql.If(
             fql.Not(
               fql.Exists(
-                fql.Match(fql.Index("user_by_email"), fql.Casefold(user.email))
+                fql.Match(fql.Index('user_by_email'), fql.Casefold(user.email))
               )
             ),
-            fql.Create(fql.Collection("users"), { data: { email } }),
+            fql.Create(fql.Collection('users'), { data: { email } }),
             fql.Get(
-              fql.Match(fql.Index("user_by_email"), fql.Casefold(user.email))
+              fql.Match(fql.Index('user_by_email'), fql.Casefold(user.email))
             )
           )
         );

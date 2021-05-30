@@ -10,12 +10,12 @@ const post = {
   slug: 'my-new-post',
   title: 'My new post',
   content: '<p>Post excerpt</p>',
-  updatedAt: '10 de abril'
+  updatedAt: '10 de abril',
 };
 
 jest.mock('next-auth/client');
 jest.mock('next/router');
-jest.mock('services/prismic')
+jest.mock('services/prismic');
 
 describe('Post preview page', () => {
   it('should be rendered in the document', () => {
@@ -37,12 +37,12 @@ describe('Post preview page', () => {
 
     useSessionMocked.mockReturnValueOnce([
       { activeSubscription: 'fake-active-subscription' },
-      false
+      false,
     ] as any);
 
     useRouterMocked.mockReturnValueOnce({
       push: pushMock,
-    } as any)
+    } as any);
 
     render(<Post post={post} />);
 
@@ -55,15 +55,16 @@ describe('Post preview page', () => {
     getPrismicClientMocked.mockReturnValueOnce({
       getByUID: jest.fn().mockResolvedValueOnce({
         data: {
-          title: [{
-            type: 'heading', text: 'My new post'
-          }],
-          content: [
-            { type: 'paragraph', text: 'Post content' }
+          title: [
+            {
+              type: 'heading',
+              text: 'My new post',
+            },
           ],
+          content: [{ type: 'paragraph', text: 'Post content' }],
         },
-        last_publication_date: '04-01-2021'
-      })
+        last_publication_date: '04-01-2021',
+      }),
     } as any);
 
     const response = await getStaticProps({ params: { slug: 'my-new-post' } });
@@ -75,10 +76,10 @@ describe('Post preview page', () => {
             slug: 'my-new-post',
             title: 'My new post',
             content: '<p>Post content</p>',
-            updatedAt: '01 de abril de 2021'
-          }
-        }
+            updatedAt: '01 de abril de 2021',
+          },
+        },
       })
     );
-  })
-})
+  });
+});

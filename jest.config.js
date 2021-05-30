@@ -10,10 +10,10 @@ module.exports = {
   },
   collectCoverage: true,
   collectCoverageFrom: [
-    "**/*.tsx",
-    "!**/*.spec.tsx",
-    "!**/_app.tsx",
-    "!**/_document.tsx",
+    '**/*.tsx',
+    '!**/*.spec.tsx',
+    '!**/_app.tsx',
+    '!**/_document.tsx',
   ],
-  coverageReporters: ['lcov', 'json']
+  coverageReporters: ['lcov', 'json'],
 };

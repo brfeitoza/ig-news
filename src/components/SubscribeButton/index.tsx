@@ -1,10 +1,10 @@
-import { useSession, signIn } from "next-auth/client";
-import { useRouter } from "next/router";
+import { useSession, signIn } from 'next-auth/client';
+import { useRouter } from 'next/router';
 
-import { api } from "services/api";
-import { getStripeJs } from "services/stripe-js";
+import { api } from 'services/api';
+import { getStripeJs } from 'services/stripe-js';
 
-import styles from "./styles.module.scss";
+import styles from './styles.module.scss';
 
 export function SubscribeButton() {
   const [session]: any = useSession();
@@ -12,7 +12,7 @@ export function SubscribeButton() {
 
   async function handleSubscribe() {
     if (!session) {
-      signIn("github");
+      signIn('github');
       return;
     }
 
@@ -22,7 +22,7 @@ export function SubscribeButton() {
     }
 
     try {
-      const response = await api.post("subscribe");
+      const response = await api.post('subscribe');
 
       const { sessionId } = response.data;
 
@@ -30,7 +30,8 @@ export function SubscribeButton() {
 
       await stripe.redirectToCheckout({ sessionId });
     } catch (err) {
-      alert(err.message);
+      router.push('/');
+      // TODO tratar o erro com toast
     }
   }
 

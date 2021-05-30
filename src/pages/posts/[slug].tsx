@@ -1,11 +1,11 @@
-import { GetServerSideProps } from "next";
-import { getSession } from "next-auth/client";
+import { GetServerSideProps } from 'next';
+import { getSession } from 'next-auth/client';
 import { Session } from 'next-auth';
-import Head from "next/head";
-import { RichText } from "prismic-dom";
-import { getPrismicClient } from "services/prismic";
+import Head from 'next/head';
+import { RichText } from 'prismic-dom';
+import { getPrismicClient } from 'services/prismic';
 
-import styles from "./post.module.scss";
+import styles from './post.module.scss';
 
 interface PostProps {
   post: {
@@ -25,8 +25,8 @@ interface CustomSessionProps extends Session {
       userId: object;
       status: 'active' | 'canceled';
       priceId: string;
-    }
-  }
+    };
+  };
 }
 
 export default function Post({ post }: PostProps) {
@@ -43,7 +43,7 @@ export default function Post({ post }: PostProps) {
           <div
             className={styles.postContent}
             dangerouslySetInnerHTML={{ __html: post.content }}
-          ></div>
+          />
         </article>
       </main>
     </>
@@ -54,13 +54,13 @@ export const getServerSideProps: GetServerSideProps = async ({
   req,
   params,
 }) => {
-  const session = await getSession({ req }) as CustomSessionProps;
+  const session = (await getSession({ req })) as CustomSessionProps;
   const { slug } = params;
 
   if (!session?.activeSubscription) {
     return {
       redirect: {
-        destination: "/",
+        destination: '/',
         permanent: false,
       },
     };
@@ -68,18 +68,18 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   const prismic = getPrismicClient(req);
 
-  const response = await prismic.getByUID("publication", String(slug), {});
+  const response = await prismic.getByUID('publication', String(slug), {});
 
   const post = {
     slug,
     title: RichText.asText(response.data.title),
     content: RichText.asHtml(response.data.content),
     updatedAt: new Date(response.last_publication_date).toLocaleDateString(
-      "pt-BR",
+      'pt-BR',
       {
-        day: "2-digit",
-        month: "long",
-        year: "numeric",
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric',
       }
     ),
   };

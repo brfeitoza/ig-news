@@ -1,7 +1,7 @@
-import { query as fql } from "faunadb";
+import { query as fql } from 'faunadb';
 
-import { fauna } from "services/fauna";
-import { stripe } from "services/stripe";
+import { fauna } from 'services/fauna';
+import { stripe } from 'services/stripe';
 
 export async function saveSubscription(
   subscriptionId: string,
@@ -10,8 +10,8 @@ export async function saveSubscription(
 ) {
   const userRef = await fauna.query(
     fql.Select(
-      "ref",
-      fql.Get(fql.Match(fql.Index("user_by_stripe_customer_id"), customerId))
+      'ref',
+      fql.Get(fql.Match(fql.Index('user_by_stripe_customer_id'), customerId))
     )
   );
 
@@ -26,14 +26,14 @@ export async function saveSubscription(
 
   if (createAction) {
     await fauna.query(
-      fql.Create(fql.Collection("subscriptions"), { data: subscriptionData })
+      fql.Create(fql.Collection('subscriptions'), { data: subscriptionData })
     );
   } else {
     await fauna.query(
       fql.Replace(
         fql.Select(
-          "ref",
-          fql.Get(fql.Match(fql.Index("subscription_by_id"), subscriptionId))
+          'ref',
+          fql.Get(fql.Match(fql.Index('subscription_by_id'), subscriptionId))
         ),
         {
           data: subscriptionData,

@@ -1,15 +1,15 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import { Readable } from "stream";
-import Stripe from "stripe";
+import { NextApiRequest, NextApiResponse } from 'next';
+import { Readable } from 'stream';
+import Stripe from 'stripe';
 
-import { stripe } from "services/stripe";
-import { saveSubscription } from "./_lib/manageSubscription";
+import { stripe } from 'services/stripe';
+import { saveSubscription } from './_lib/manageSubscription';
 
 async function buffer(readable: Readable) {
   const chunks = [];
 
   for await (const chunk of readable) {
-    chunks.push(typeof chunk === "string" ? Buffer.from(chunk) : chunk);
+    chunks.push(typeof chunk === 'string' ? Buffer.from(chunk) : chunk);
   }
 
   return Buffer.concat(chunks);
@@ -22,21 +22,21 @@ export const config = {
 };
 
 const relevantEvents = new Set([
-  "checkout.session.completed",
-  "customer.subscription.updated",
-  "customer.subscription.deleted",
+  'checkout.session.completed',
+  'customer.subscription.updated',
+  'customer.subscription.deleted',
 ]);
 
 export default async (request: NextApiRequest, response: NextApiResponse) => {
-  if (!(request.method === "POST")) {
-    response.setHeader("Allow", "POST");
-    response.status(405).end("Method not allowed");
+  if (!(request.method === 'POST')) {
+    response.setHeader('Allow', 'POST');
+    response.status(405).end('Method not allowed');
 
     return response;
   }
 
   const buf = await buffer(request);
-  const secret = request.headers["stripe-signature"];
+  const secret = request.headers['stripe-signature'];
 
   let event: Stripe.Event;
 
@@ -55,8 +55,8 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
   if (relevantEvents.has(type)) {
     try {
       switch (type) {
-        case "customer.subscription.updated":
-        case "customer.subscription.deleted":
+        case 'customer.subscription.updated':
+        case 'customer.subscription.deleted':
           const subscription = event.data.object as Stripe.Subscription;
 
           await saveSubscription(
@@ -67,7 +67,7 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
 
           break;
 
-        case "checkout.session.completed":
+        case 'checkout.session.completed':
           const checkoutSession = event.data.object as Stripe.Checkout.Session;
 
           await saveSubscription(
@@ -78,10 +78,10 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
 
           break;
         default:
-          throw new Error("Unhandled event.");
+          throw new Error('Unhandled event.');
       }
     } catch (error) {
-      return response.json({ error: "Webhook handler failed" });
+      return response.json({ error: 'Webhook handler failed' });
     }
   }
 

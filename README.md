@@ -34,14 +34,15 @@
 
 # 📌 Contents
 
-* [Screenshots](#camera-screenshot)
-* [Technologies](#rocket-technologies)
-* [How to Run](#computer-how-to-run)
-* [Issues](#bug-issues)
-* [Contributing](#sparkles-issues)
-* [License](#page_facing_up-license)
+- [Screenshots](#camera-screenshot)
+- [Technologies](#rocket-technologies)
+- [How to Run](#computer-how-to-run)
+- [Issues](#bug-issues)
+- [Contributing](#sparkles-issues)
+- [License](#page_facing_up-license)
 
 # :camera: Screenshots
+
 <div align="center">
    <img src="./.github/home.png" width="400px">
    <img src="./.github/posts.png" width="400px">
@@ -50,20 +51,21 @@
 </div>
 
 # :rocket: Technologies
+
 This project was made using the follow technologies:
 
-* [React](https://reactjs.org/)
-* [Next.js](https://nextjs.org/)
-* [NextAuth.js](https://next-auth.js.org/)
-* [TypeScript](https://www.typescriptlang.org/)
-* [Sass](https://sass-lang.com/)
-* [React Icons](https://react-icons.github.io/react-icons/)
-* [FaunaDB](https://fauna.com/)
-* [Stripe](https://stripe.com/br)
-* [Prismic](https://prismic.io/)
-* [Axios](https://github.com/axios/axios)
-* [Husky](https://www.npmjs.com/package/husky)
-* [Commitlint](https://github.com/conventional-changelog/commitlint)
+- [React](https://reactjs.org/)
+- [Next.js](https://nextjs.org/)
+- [NextAuth.js](https://next-auth.js.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Sass](https://sass-lang.com/)
+- [React Icons](https://react-icons.github.io/react-icons/)
+- [FaunaDB](https://fauna.com/)
+- [Stripe](https://stripe.com/br)
+- [Prismic](https://prismic.io/)
+- [Axios](https://github.com/axios/axios)
+- [Husky](https://www.npmjs.com/package/husky)
+- [Commitlint](https://github.com/conventional-changelog/commitlint)
 
 # :computer: How to run
 
@@ -79,6 +81,7 @@ $ yarn
 # Run Aplication
 $ yarn dev
 ```
+
 Go to http://localhost:3000/ to see the application running.
 
 # :bug: Issues
