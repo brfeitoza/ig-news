@@ -34,13 +34,13 @@
 
 # Contents
 
-- [Screenshots](#camera-screenshot)
-- [Technologies](#rocket-technologies)
+- [Screenshots](#screenshots)
+- [Technologies](#technologies)
 - [Getting started](#getting-started)
 - [Running tests](#running-tests)
-- [Issues](#bug-issues)
-- [Contributing](#sparkles-issues)
-- [License](#page_facing_up-license)
+- [Issues](#issues)
+- [Contributing](#issues)
+- [License](#license)
 
 # Screenshots
 
