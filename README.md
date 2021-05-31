@@ -32,7 +32,7 @@
   </sub>
 </div>
 
-# 📌 Contents
+# Contents
 
 - [Screenshots](#camera-screenshot)
 - [Technologies](#rocket-technologies)
@@ -50,7 +50,7 @@
    <img src="./.github/post.png" width="400px">
 </div>
 
-# :rocket: Technologies
+# Technologies
 
 This project was made using the follow technologies:
 
@@ -64,10 +64,15 @@ This project was made using the follow technologies:
 - [Stripe](https://stripe.com/br)
 - [Prismic](https://prismic.io/)
 - [Axios](https://github.com/axios/axios)
+- [Jest](https://jestjs.io/pt-BR/)
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/)
+- [ESLint](https://eslint.org/)
+- [Prettier](https://prettier.io/)
+- [EditorConfig](https://editorconfig.org/)
 - [Husky](https://www.npmjs.com/package/husky)
 - [Commitlint](https://github.com/conventional-changelog/commitlint)
 
-# :computer: How to run
+# How to run
 
 ```bash
 # Clone Repository
@@ -81,14 +86,26 @@ $ yarn
 # Run Aplication
 $ yarn dev
 ```
-
+ 
 Go to http://localhost:3000/ to see the application running.
+  
+# Running tests
 
-# :bug: Issues
+```bash
+$ yarn test
+
+# Run with --watch to keep the tests running after each change
+$ yarn test --watch
+  
+# Run with --coverage to generate a new coverage report
+$ yarn test --coverage
+```
+
+# Issues
 
 Create a <a href="https://github.com/brfeitoza/ig-news/issues">new issue report</a>, it will be an honor to be able to help you solve and further improve our application.
 
-# :sparkles: Contributing
+# Contributing
 
 This project follows the Angular Convention commits pattern. [Click](./commitlint.config.js) to see the available prefixes.
 
@@ -97,7 +114,7 @@ This project follows the Angular Convention commits pattern. [Click](./commitlin
 - Commit your changes: `git commit -m 'feat: my new feature'`;
 - Push to your branch: `git push origin my-feature`.
 
-# :page_facing_up: License
+# License
 
 This project is under the [MIT License](./LICENSE) |
 Made with 💖 by [Bruno Feitoza](https://www.linkedin.com/in/brfeitoza/).
