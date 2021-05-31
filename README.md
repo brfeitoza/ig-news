@@ -36,7 +36,8 @@
 
 - [Screenshots](#camera-screenshot)
 - [Technologies](#rocket-technologies)
-- [How to Run](#computer-how-to-run)
+- [Getting started](#getting-started)
+- [Running tests](#running-tests)
 - [Issues](#bug-issues)
 - [Contributing](#sparkles-issues)
 - [License](#page_facing_up-license)
