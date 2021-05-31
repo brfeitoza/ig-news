@@ -16,7 +16,7 @@
 </p>
 
 <p align="center">
-  📰 ig.news is a blog where you can stay on top of the latest news about the React world.
+  ig.news is a blog where you can stay on top of the latest news about the React world.
 </p>
 
 <p align="center">Project developed during the <strong>Chapter III</strong> of Ignite | <a href="https://rocketseat.com.br/">Rocketseat</a></p>
@@ -41,7 +41,7 @@
 - [Contributing](#sparkles-issues)
 - [License](#page_facing_up-license)
 
-# :camera: Screenshots
+# Screenshots
 
 <div align="center">
    <img src="./.github/home.png" width="400px">
@@ -72,7 +72,7 @@ This project was made using the follow technologies:
 - [Husky](https://www.npmjs.com/package/husky)
 - [Commitlint](https://github.com/conventional-changelog/commitlint)
 
-# How to run
+# Getting started
 
 ```bash
 # Clone Repository
@@ -86,9 +86,9 @@ $ yarn
 # Run Aplication
 $ yarn dev
 ```
- 
+
 Go to http://localhost:3000/ to see the application running.
-  
+
 # Running tests
 
 ```bash
@@ -96,7 +96,7 @@ $ yarn test
 
 # Run with --watch to keep the tests running after each change
 $ yarn test --watch
-  
+
 # Run with --coverage to generate a new coverage report
 $ yarn test --coverage
 ```
