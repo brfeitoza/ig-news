@@ -44,7 +44,7 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
     event = stripe.webhooks.constructEvent(
       buf,
       secret,
-      process.env.STRIPE_WEBHOOK_SECRET
+      process.env.STRIPE_WEBHOOK_SECRET,
     );
   } catch (error) {
     return response.status(400).send(`Webhook error: ${error.message}`);
@@ -62,7 +62,7 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
           await saveSubscription(
             subscription.id,
             subscription.customer.toString(),
-            false
+            false,
           );
 
           break;
@@ -73,7 +73,7 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
           await saveSubscription(
             checkoutSession.subscription.toString(),
             checkoutSession.customer.toString(),
-            true
+            true,
           );
 
           break;

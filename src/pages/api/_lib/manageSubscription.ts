@@ -6,13 +6,13 @@ import { stripe } from 'services/stripe';
 export async function saveSubscription(
   subscriptionId: string,
   customerId: string,
-  createAction = false
+  createAction = false,
 ) {
   const userRef = await fauna.query(
     fql.Select(
       'ref',
-      fql.Get(fql.Match(fql.Index('user_by_stripe_customer_id'), customerId))
-    )
+      fql.Get(fql.Match(fql.Index('user_by_stripe_customer_id'), customerId)),
+    ),
   );
 
   const subscription = await stripe.subscriptions.retrieve(subscriptionId);
@@ -26,19 +26,19 @@ export async function saveSubscription(
 
   if (createAction) {
     await fauna.query(
-      fql.Create(fql.Collection('subscriptions'), { data: subscriptionData })
+      fql.Create(fql.Collection('subscriptions'), { data: subscriptionData }),
     );
   } else {
     await fauna.query(
       fql.Replace(
         fql.Select(
           'ref',
-          fql.Get(fql.Match(fql.Index('subscription_by_id'), subscriptionId))
+          fql.Get(fql.Match(fql.Index('subscription_by_id'), subscriptionId)),
         ),
         {
           data: subscriptionData,
-        }
-      )
+        },
+      ),
     );
   }
 }

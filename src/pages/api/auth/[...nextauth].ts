@@ -28,14 +28,14 @@ export default NextAuth({
                   fql.Get(
                     fql.Match(
                       fql.Index('user_by_email'),
-                      fql.Casefold(session.user.email)
-                    )
-                  )
-                )
+                      fql.Casefold(session.user.email),
+                    ),
+                  ),
+                ),
               ),
               fql.Match(fql.Index('subscription_by_status'), 'active'),
-            ])
-          )
+            ]),
+          ),
         );
 
         return { ...session, activeSubscription: userActiveSubscription };
@@ -51,14 +51,14 @@ export default NextAuth({
           fql.If(
             fql.Not(
               fql.Exists(
-                fql.Match(fql.Index('user_by_email'), fql.Casefold(user.email))
-              )
+                fql.Match(fql.Index('user_by_email'), fql.Casefold(user.email)),
+              ),
             ),
             fql.Create(fql.Collection('users'), { data: { email } }),
             fql.Get(
-              fql.Match(fql.Index('user_by_email'), fql.Casefold(user.email))
-            )
-          )
+              fql.Match(fql.Index('user_by_email'), fql.Casefold(user.email)),
+            ),
+          ),
         );
 
         return true;

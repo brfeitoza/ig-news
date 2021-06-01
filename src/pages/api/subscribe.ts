@@ -26,8 +26,8 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
 
   const user = await fauna.query<User>(
     fql.Get(
-      fql.Match(fql.Index('user_by_email'), fql.Casefold(session.user.email))
-    )
+      fql.Match(fql.Index('user_by_email'), fql.Casefold(session.user.email)),
+    ),
   );
 
   let customerId = user.data.stripe_customer_id;
@@ -42,7 +42,7 @@ export default async (request: NextApiRequest, response: NextApiResponse) => {
         data: {
           stripe_customer_id: stripeCustomer.id,
         },
-      })
+      }),
     );
 
     customerId = stripeCustomer.id;

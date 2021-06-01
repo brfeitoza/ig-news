@@ -39,7 +39,7 @@ describe('Post page', () => {
         redirect: expect.objectContaining({
           destination: '/',
         }),
-      })
+      }),
     );
   });
 
@@ -82,7 +82,7 @@ describe('Post page', () => {
             updatedAt: '01 de abril de 2021',
           },
         },
-      })
+      }),
     );
   });
 });

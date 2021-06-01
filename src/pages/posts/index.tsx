@@ -51,7 +51,7 @@ export const getStaticProps: GetStaticProps = async () => {
     {
       fetch: ['publication.title', 'publication.content'],
       pageSize: 100,
-    }
+    },
   );
 
   const posts = response.results.map(post => {
@@ -67,7 +67,7 @@ export const getStaticProps: GetStaticProps = async () => {
           day: '2-digit',
           month: 'long',
           year: 'numeric',
-        }
+        },
       ),
     };
   });

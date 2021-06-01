@@ -79,7 +79,7 @@ describe('Post preview page', () => {
             updatedAt: '01 de abril de 2021',
           },
         },
-      })
+      }),
     );
   });
 });

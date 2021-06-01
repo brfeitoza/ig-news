@@ -16,7 +16,7 @@ describe('ActiveLink component', () => {
     render(
       <ActiveLink href="/" activeClassName="active">
         <a>Home</a>
-      </ActiveLink>
+      </ActiveLink>,
     );
 
     expect(screen.getByText('Home')).toBeInTheDocument();
@@ -26,7 +26,7 @@ describe('ActiveLink component', () => {
     render(
       <ActiveLink href="/" activeClassName="active">
         <a>Home</a>
-      </ActiveLink>
+      </ActiveLink>,
     );
 
     expect(screen.getByText('Home')).toHaveClass('active');
