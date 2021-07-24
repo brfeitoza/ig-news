@@ -7,6 +7,10 @@
     "build": "next build",
     "start": "next start",
     "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "prettier --write .",
+    "prepare": "husky install",
     "webhooks": "stripe listen --forward-to localhost:3000/api/webhooks"
   },
   "dependencies": {
@@ -47,17 +51,12 @@
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-testing-library": "^4.6.0",
-    "husky": "4.3.8",
+    "husky": "^7.0.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
     "jest-dom": "^4.0.0",
     "prettier": "^2.3.0",
     "ts-jest": "^26.5.6",
     "typescript": "^4.2.3"
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
   }
 }
