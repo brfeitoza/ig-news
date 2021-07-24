@@ -12,9 +12,9 @@ export default NextAuth({
       scope: 'read:user',
     }),
   ],
-  // jwt: {
-  //   signingKey: process.env.SIGNING_KEY,
-  // },
+  jwt: {
+    signingKey: process.env.SIGNING_KEY,
+  },
   callbacks: {
     async session(session) {
       try {
